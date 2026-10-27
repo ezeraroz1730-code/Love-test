@@ -1,0 +1,187 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(
+        135deg, #ff758c, #ff7eb3, #ffc3a0
+    );
+    background-size: 300% 300%;
+    animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 430px;
+    padding: 28px 22px;
+    background: white;
+    border-radius: 28px;
+    text-align: center;
+    box-shadow: 0 15px 45px #9c164a40;
+}
+
+h1, #resultTitle {
+    color: #ff3975;
+}
+
+.subtitle {
+    color: #888;
+    font-size: 14px;
+}
+
+.emoji {
+    font-size: 55px;
+    animation: heartbeat 1.2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.1); }
+}
+
+#progress {
+    margin-top: 25px;
+    color: #999;
+    font-size: 13px;
+}
+
+.progress-bar {
+    height: 8px;
+    width: 100%;
+    overflow: hidden;
+    background: #ffe2eb;
+    border-radius: 20px;
+}
+
+#progressFill {
+    height: 100%;
+    width: 5%;
+    background: #ff3975;
+    border-radius: 20px;
+    transition: width 0.3s;
+}
+
+#question {
+    min-height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #444;
+    font-size: 22px;
+    line-height: 1.5;
+    margin: 20px 0;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    min-height: 52px;
+}
+
+button {
+    border: none;
+    border-radius: 14px;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.yes, .restart {
+    flex: 1;
+    color: white;
+    background: linear-gradient(135deg, #ff3975, #ff75a2);
+}
+
+.no {
+    flex: 1;
+    color: #ff3975;
+    background: #ffe8ef;
+}
+
+/* YES moves outside the normal button layout */
+#yesBtn.running {
+    position: fixed;
+    z-index: 9999;
+    width: 125px;
+    flex: none;
+    margin: 0;
+    transition: left 0.12s ease, top 0.12s ease;
+}
+
+.hint {
+    color: #aaa;
+    font-size: 12px;
+    margin-top: 22px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.big-heart {
+    font-size: 48px;
+    margin: 20px 0;
+}
+
+#result {
+    white-space: pre-line;
+    overflow-wrap: anywhere;
+    line-height: 1.8;
+    color: #555;
+}
+
+.restart {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.heart {
+    position: fixed;
+    bottom: -40px;
+    z-index: 1;
+    pointer-events: none;
+    animation: floatUp 5s linear forwards;
+}
+
+@keyframes floatUp {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 380px) {
+    .container {
+        padding: 22px 15px;
+    }
+
+    #question {
+        font-size: 19px;
+    }
+
+    button {
+        padding: 13px 12px;
+        font-size: 14px;
+    }
+}
